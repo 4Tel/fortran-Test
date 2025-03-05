@@ -8,7 +8,7 @@ else
 fi
 
 case "$i" in
-  1) time mpirun -n 4 main.x;;
+  1) time mpirun -n 4 ./main.x;;
   2) qsub "$src/qfile";;
   *) echo "invalid value: $i";exit 1;;
 esac
