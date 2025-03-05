@@ -1,3 +1,11 @@
+# User Usage
+*.swp
+__pycache__/
+*.[1-9]*
+
+# Preprocess files
+*.i90
+
 # Prerequisites
 *.d
 
