@@ -12,4 +12,5 @@ PROGRAM main
 !
   id = omp_get_thread_num()
   WRITE (*, *) 'outside of parallel: ', id
+  WRITE (*, *) "openmp version: ", openmp_version
 END PROGRAM main
