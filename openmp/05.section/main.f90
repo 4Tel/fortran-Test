@@ -1,0 +1,10 @@
+PROGRAM main
+  !
+!$OMP SECTIONS
+!$OMP SECTION
+  WRITE(*,*) 'hello'
+!$OMP SECTION
+  WRITE(*,*) 'hi'
+!$OMP END SECTIONS
+  !
+END PROGRAM main
