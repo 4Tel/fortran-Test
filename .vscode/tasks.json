@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // build
+    {
+      "label": "make",
+      "type": "shell",
+      "command": "make -j4",
+      "args": [],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+    }
+  ]
+}
