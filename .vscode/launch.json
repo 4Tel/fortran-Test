@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "configurations": [
+    {
+      "name": "Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "targetArchitecture": "x86",
+      //
+      "program": "${fileDirname}/main.x",
+      "cwd": "${fileDirname}",
+      "args": [],
+      "environment": [],
+      //      
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "MIMode": "gdb",
+    },
+    {
+      "name": "attach",
+      "type": "cppdbg",
+      "request": "attach",
+      "targetArchitecture": "x86",
+      //
+      "program": "${fileDirname}/main.x",
+      "preLaunchTask": "make",
+      "processId": "${command:pickProcess}",
+      "setupCommands": [
+        {
+          "description": "pretty",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "DisAssembly",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+  ]
+}
