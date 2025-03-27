@@ -1,15 +1,56 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // build
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "clean"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      }
+    },
     {
       "label": "make",
       "type": "shell",
+      "dependsOn": "clean",
       "command": "make -j4",
       "args": [],
       "options": {
         "cwd": "${fileDirname}"
       },
+    },
+    {
+      "label": "compile",
+      "dependsOn": "clean",
+      "command": "mpiifort",
+      "args": [
+        "-g",
+        "-O0",
+        "-fpe0",
+        "-traceback",
+        "-qopenmp",
+        "${fileBasename}",
+        "-o",
+        "${fileBasenameNoExtension}.x"
+      ]
+    },
+    {
+      "label": "gfortran",
+      "dependsOn": "clean",
+      "type": "shell",
+      "command": "gfortran",
+      "args": [
+        "-g",
+        "${fileBasename}",
+        "-o",
+        "${fileBasenameNoExtension}.x",
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      }
     }
   ]
 }
