@@ -3,8 +3,8 @@ PROGRAM main
   REAL::start_cpu, end_cpu
   INTEGER::start_cnt, end_cnt, cnt_rate, cnt_max
   !
-  INTEGER, PARAMETER::sep1 = 100000
-  INTEGER, PARAMETER::sep2 = 100000
+  INTEGER, PARAMETER::sep1 = 10000
+  INTEGER, PARAMETER::sep2 = 10000
   INTEGER(kind=8)::i, j
   REAL(kind=SELECTED_REAL_KIND(14, 200))::n
   !

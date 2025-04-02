@@ -10,7 +10,7 @@
       "program": "${fileDirname}/${fileBasenameNoExtension}.x",
       "args": [],
       //      
-      "preLaunchTask": "gfortran",
+      "preLaunchTask": "make",
       "stopAtEntry": false,
       "MIMode": "gdb",
       // "logging": {
