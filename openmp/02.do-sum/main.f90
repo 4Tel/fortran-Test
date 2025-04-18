@@ -1,12 +1,12 @@
 PROGRAM main
   IMPLICIT NONE
-  INTEGER::i, x, num
+  INTEGER::i, x, array
   !
   x = 10
-!$OMP PARALLEL DO private(i), reduction(+:num)
+!$OMP PARALLEL DO private(i), reduction(+:array)
   DO i = 1, x
-    num = num + 1
+    array = array + 1
   END DO
 !$OMP END PARALLEL DO
-  WRITE (*, *) num
+  WRITE (*, *) array
 END PROGRAM main

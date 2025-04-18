@@ -3,9 +3,14 @@ PROGRAM main
   IMPLICIT NONE
   INTEGER::id
   !
-!$OMP PARALLEL PRIVATE ( id )
+!$OMP PARALLEL
   id = omp_get_thread_num()
-  WRITE (*, *) 'HELLO from process ', id
+  WRITE (*, *) 'Hello ', id
+!$OMP END PARALLEL
+
+!$OMP PARALLEL num_threads(4)
+  id = omp_get_thread_num()
+  WRITE (*, *) 'HELLO ', id
 !$OMP END PARALLEL
   WRITE (*, *) "number of procs: ", omp_get_num_procs()
   WRITE (*, *) "number of max threads: ", omp_get_max_threads()

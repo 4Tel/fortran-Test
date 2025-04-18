@@ -1,15 +1,28 @@
 PROGRAM main
+  USE OMP_LIB
   IMPLICIT NONE
-  INTEGER::i, x, num(10)
+  INTEGER::i, x, array(10)
+  INTEGER::id, num_threads
   !
-  num(:) = 0
-  x = 10
-!$OMP PARALLEL DO default(shared), private(i)
-  DO i = 1, x
-    num(i) = num(i) + 1
+  array(:) = 0
+  x = 6
+!$OMP PARALLEL
+  num_threads = omp_get_num_threads()
+  !$OMP DO
+  DO i = 1, num_threads
+    id = omp_get_thread_num()
+    WRITE (*, *) i, id
+    array(i) = id
   END DO
-!$OMP END PARALLEL DO
+  !$OMP END DO
+  !$OMP DO
+  DO i = num_threads + 1, x
+    id = omp_get_thread_num()
+    array(i) = id
+  END DO
+  !$OMP END DO
+!$OMP END PARALLEL
   DO i = 1, x
-    WRITE (*, '("num(",I2")=",I3)') i, num(i)
+    WRITE (*, '("array(",I2")=",I3)') i, array(i)
   END DO
 END PROGRAM main
