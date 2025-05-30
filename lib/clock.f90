@@ -3,6 +3,8 @@ MODULE clock
   !
   REAL::start_cpu, end_cpu
   INTEGER::start_cnt, end_cnt, cnt_rate, cnt_max
+  PRIVATE
+  PUBLIC::start_clock, end_clock
 CONTAINS
   SUBROUTINE start_clock()
     CALL CPU_TIME(start_cpu)
