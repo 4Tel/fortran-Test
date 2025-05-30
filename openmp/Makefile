@@ -1,4 +1,4 @@
-include ../make.inc
+include ../make.mk
 files=main.o
 
 default:all
