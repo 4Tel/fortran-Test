@@ -19,11 +19,11 @@ PROGRAM main
   CALL end_clock()
 
   rst = 0
-  WRITE (*, *) "x * CONJG(x)"
+  WRITE (*, *) "DBLE(x) * CONJG(x)"
   CALL start_clock()
   DO i = 1, cnt
     DO j = 1, cnt
-      rst = rst + x*CONJG(x)
+      rst = rst + DBLE(x)*CONJG(x)
     END DO
   END DO
   WRITE (*, *) "norm_sq = ", rst
