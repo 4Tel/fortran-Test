@@ -4,4 +4,12 @@
 			"path": "."
 		}
 	],
+	"settings": {
+		"fortran.fortls.directories": [
+			"./lib"
+		],
+		"fortran.linter.includePaths": [
+			"${workspaceFolder}/lib"
+		]
+	}
 }
