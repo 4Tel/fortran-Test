@@ -9,7 +9,7 @@ MODULE mp
   PUBLIC:: mp_start, mp_end, mp_bcast
 
   INTERFACE mp_bcast
-    MODULE PROCEDURE r1_bcast, rv_bcast
+    MODULE PROCEDURE r0_bcast, r1_bcast, r2_bcast
   END INTERFACE
 CONTAINS
   SUBROUTINE mp_start()
@@ -29,15 +29,22 @@ CONTAINS
     CALL MPI_BCAST(msg, msglen, MPI_REAL, 0, MPI_COMM_WORLD, ierr)
   END SUBROUTINE bcast_real
   ! ==================================================
-  SUBROUTINE r1_bcast(msg)
+  SUBROUTINE r0_bcast(msg)
     REAL :: msg
     CALL bcast_real(msg, 1)
-  END SUBROUTINE r1_bcast
+  END SUBROUTINE r0_bcast
   !
-  SUBROUTINE rv_bcast(msg)
+  SUBROUTINE r1_bcast(msg)
     REAL::msg(:)
     INTEGER:: msglen
     msglen = SIZE(msg)
     CALL bcast_real(msg, msglen)
-  END SUBROUTINE rv_bcast
+  END SUBROUTINE r1_bcast
+  !
+  SUBROUTINE r2_bcast(msg)
+    REAL::msg(:, :)
+    INTEGER:: msglen
+    msglen = SIZE(msg, 1)*SIZE(msg, 2)
+    CALL bcast_real(msg, msglen)
+  END SUBROUTINE r2_bcast
 END MODULE mp

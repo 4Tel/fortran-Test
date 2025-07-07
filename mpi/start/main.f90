@@ -12,7 +12,7 @@ PROGRAM main
   IF (rank == 0) THEN
     WRITE (*, *) "There are total ", size, " processors."
   END IF
-  CALL mpi_barrier(MPI_COMM_WORLD, ierr)
+  CALL MPI_BARRIER(MPI_COMM_WORLD, ierr)
   WRITE (*, "(t4,a,i1,a)") "from ", rank, "th processor: Hello World!"
 
   ! End MPI.
