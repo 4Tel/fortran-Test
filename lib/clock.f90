@@ -6,7 +6,11 @@ MODULE clock
   PRIVATE
   PUBLIC::start_clock, end_clock
 CONTAINS
-  SUBROUTINE start_clock()
+  SUBROUTINE start_clock(msg)
+    CHARACTER(*), OPTIONAL::msg
+    IF (PRESENT(msg)) THEN
+      WRITE (*, *) 'Start clock: ', TRIM(msg)
+    END IF
     CALL CPU_TIME(start_cpu)
     CALL SYSTEM_CLOCK(start_cnt, cnt_rate, cnt_max)
   END SUBROUTINE start_clock

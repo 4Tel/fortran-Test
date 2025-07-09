@@ -47,17 +47,20 @@ CONTAINS
       STOP
     END IF
   END SUBROUTINE init_mem_usage
-
-  SUBROUTINE print_mem_usage()
-    IF (status /= 0) THEN
+  !
+  SUBROUTINE print_mem_usage(stats, uses)
+    TYPE(rusage), INTENT(IN) :: uses
+    INTEGER, INTENT(IN) :: stats
+    IF (stats /= 0) THEN
       WRITE (*, *) "Memory usage not initialized properly"
       RETURN
     END IF
 
-    WRITE (*, *) "User time (sec): ", REAL(usages%ru_utime%tv_sec) + &
-      REAL(usages%ru_utime%tv_usec)/1.0E6
-    WRITE (*, *) "System time (sec): ", REAL(usages%ru_stime%tv_sec) + &
-      REAL(usages%ru_stime%tv_usec)/1.0E6
-    WRITE (*, *) "Memory usage (KB): ", usages%ru_maxrss
+    WRITE (*, *) "Memory usage (KB): ", uses%ru_maxrss
   END SUBROUTINE print_mem_usage
+  !
+  SUBROUTINE update_mem_usage()
+    CALL init_mem_usage()
+    CALL print_mem_usage(status, usages)
+  END SUBROUTINE update_mem_usage
 END MODULE mem
