@@ -2,7 +2,7 @@ PROGRAM main
   USE clock, ONLY: start_clock, end_clock
   IMPLICIT NONE
   INTEGER::idx
-  INTEGER::cnt = 100000
+  INTEGER::cnt = 1000000
   INTEGER::size = 1000000
 
   CALL start_clock("Stack")
@@ -26,19 +26,16 @@ PROGRAM main
 CONTAINS
   SUBROUTINE use_stack()
     REAL::arr(size)
-    arr = 0
   END SUBROUTINE use_stack
   !
   SUBROUTINE use_heap1()
     REAL, ALLOCATABLE::arr(:)
     ALLOCATE (arr(size))
-    arr = 0
   END SUBROUTINE use_heap1
   !
   SUBROUTINE use_heap2()
     REAL, ALLOCATABLE::arr(:)
     ALLOCATE (arr(size))
-    arr = 0
     DEALLOCATE (arr)
   END SUBROUTINE use_heap2
 END PROGRAM main

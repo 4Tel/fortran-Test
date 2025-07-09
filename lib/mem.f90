@@ -63,4 +63,23 @@ CONTAINS
     CALL init_mem_usage()
     CALL print_mem_usage(status, usages)
   END SUBROUTINE update_mem_usage
+  !
+  SUBROUTINE VmInfo()
+    CHARACTER(LEN=256) :: line
+    INTEGER :: ios
+    OPEN (UNIT=10, FILE="/proc/self/status", STATUS="old")
+
+    DO
+      READ (10, '(A)', IOSTAT=ios) line
+      IF (ios /= 0) EXIT
+      IF (INDEX(line, "VmStk:") == 1) THEN
+        PRINT *, TRIM(line)
+      END IF
+      IF (INDEX(line, "VmData:") == 1) THEN
+        PRINT *, TRIM(line)
+      END IF
+    END DO
+
+    CLOSE (10)
+  END SUBROUTINE VmInfo
 END MODULE mem
