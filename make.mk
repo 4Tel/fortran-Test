@@ -30,7 +30,7 @@ default:all
 all: libs build
 libs:
 	- (if [ -d $(LIB_DIR) ]; then cd $(LIB_DIR) && $(MAKE); fi)
-build: $(files) $(exes)
+build: $(LIB_OBJS) $(files) $(exes)
 run: 
 	- mpirun -np 4 ./main.x
 clean:

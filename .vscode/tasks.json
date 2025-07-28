@@ -16,7 +16,7 @@
       "label": "make",
       "type": "shell",
       "dependsOn": "clean",
-      "command": "make -j4",
+      "command": "make",
       "args": [],
       "options": {
         "cwd": "${fileDirname}"
