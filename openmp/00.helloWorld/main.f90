@@ -11,6 +11,9 @@ PROGRAM main
 !$OMP PARALLEL num_threads(4)
   id = omp_get_thread_num()
   WRITE (*, *) 'HELLO ', id
+  !$OMP MASTER
+  WRITE (*, *) "number of threads: ", omp_get_num_threads()
+  !$OMP END MASTER
 !$OMP END PARALLEL
   WRITE (*, *) "number of procs: ", omp_get_num_procs()
   WRITE (*, *) "number of max threads: ", omp_get_max_threads()
