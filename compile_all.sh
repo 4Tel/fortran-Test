@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(cd ./lib && make)
+(cd ./lib && make && make)
 find . -maxdepth 3 -type f -name "*.f90" -exec dirname {} \; | sort -u | while read -r dir; do
   echo -e "${KCYN}Entering directory${KNRM}: $dir"
 

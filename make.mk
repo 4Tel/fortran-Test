@@ -1,3 +1,7 @@
+define color_echo
+	@echo -e "${KGRN}$(1)${KNRM}"
+endef
+
 LIB_DIR     = ../../lib
 LIB_OBJS    = $(patsubst %.f90,%.o,$(wildcard $(LIB_DIR)/*.f90))
 
@@ -29,6 +33,7 @@ files := $(patsubst %.f90,%.o,$(wildcard *.f90))
 default:all
 all: libs build
 libs:
+	@$(call color_echo, "Building libraries ...")
 	- (if [ -d $(LIB_DIR) ]; then cd $(LIB_DIR) && $(MAKE); fi)
 build: $(LIB_OBJS) $(files) $(exes)
 run: 
