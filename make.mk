@@ -20,7 +20,7 @@ F90FLAGS    = $(FFLAGS) -nomodule -fpp -allow nofpp_comments -qopenmp $(MODFLAGS
 FFLAGS      = -O2 -g -traceback -no-wrap-margin
 
 LD          = mpiifort
-LDFLAGS     = -qopenmp
+LDFLAGS     = -qopenmp -lmkl_intel_lp64  -lmkl_sequential -lmkl_core
 LD_LIBS     = 
 
 AR          = ar
