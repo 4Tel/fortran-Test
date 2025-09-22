@@ -17,6 +17,7 @@ MODFLAGS    = $(MOD_FLAG). $(MOD_FLAG)$(LIB_DIR)
 
 MPIF90      = mpiifort
 F90FLAGS    = $(FFLAGS) -nomodule -fpp -allow nofpp_comments -qopenmp $(MODFLAGS)
+F90_NOOPT		= -O0 -g -traceback -no-wrap-margin -nomodule -fpp -allow nofpp_comments $(MODFLAGS)
 FFLAGS      = -O2 -g -traceback -no-wrap-margin
 
 LD          = mpiifort
